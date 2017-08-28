@@ -28,15 +28,15 @@ var steps = [
     page.evaluate(function(productID) {
       console.log('masuk evaluate dengan productID: ' + productID)
       document.getElementById('search-key').value = productID;
-      // document.querySelector('.header .searchbar-form .search-button').click();
+      document.querySelector('.header .searchbar-form .search-button').click();
     }, productID)
   },
-  function() {
-    console.log('Step 3. Click Search Button')
-    page.evaluate(function() {
-      document.querySelector('.header .searchbar-form .search-button').click();
-    })
-  },
+  // function() {
+  //   console.log('Step 3. Click Search Button')
+  //   page.evaluate(function() {
+  //     document.querySelector('.header .searchbar-form .search-button').click();
+  //   })
+  // },
   function() {
     console.log('Step 3.5 . Render Current Page')
     page.render('aliexpress-'+String(testindex+1)+'.png')
