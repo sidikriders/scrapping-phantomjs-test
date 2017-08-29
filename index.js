@@ -85,6 +85,10 @@ request(url, function(error, response, html) {
     $('.seller-score-feedback').each( (x, el) => {
       console.log(el)
     })
+    $('.store-open-time span').each( (x, el) => {
+      result.store.open_since = el.children[0].data
+    })
+
   }
   console.log(result)
 })
