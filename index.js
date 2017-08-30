@@ -2,11 +2,11 @@ const cheerio = require('cheerio');
 const request = require('request');
 // const jsonframe = require('jsonframe');
 // baju
-var url = "https://www.aliexpress.com/item/Blusas-Mujer-De-Moda-2017-Summer-Fashion-Back-Lace-Women-Tunic-Blouses-Short-Sleeve-Harajuku-Tee/32814580334.html"
+// var url = "https://www.aliexpress.com/item/Blusas-Mujer-De-Moda-2017-Summer-Fashion-Back-Lace-Women-Tunic-Blouses-Short-Sleeve-Harajuku-Tee/32814580334.html"
 // charger
-// var url = 'https://www.aliexpress.com/item/BlitzWolf-EU-Qualcomm-Certified-Quick-Charge-3-0-18W-Micro-USB-Charger-USB-Adapter-with-Power3S/32604474505.html'
+var url = 'https://www.aliexpress.com/item/BlitzWolf-EU-Qualcomm-Certified-Quick-Charge-3-0-18W-Micro-USB-Charger-USB-Adapter-with-Power3S/32604474505.html'
 // minion
-// var url = "https://www.aliexpress.com/item/kids-toys-1-pc-20cm-high-Minions-Plush-animal-toy-Depicable-Me-Movie-Minions-small-pendant/32544859436.html"
+// var url = "https://www.aliexpress.com/item//32544859436.html"
 var $;
 var result = {}
 
@@ -58,7 +58,7 @@ request(url, function(error, response, html) {
         }
       })
       // result.product.variants.push(someVariant)
-      result.product.variants.push(JSON.stringify(someVariant))
+      result.product.variants.push(someVariant)
     })
     $('.product-star-order .order-num').each( (x, el) => {
       result.product.number_of_order = el.children[0].data.split(" ")[0]
@@ -83,12 +83,12 @@ request(url, function(error, response, html) {
       result.store.location = el.children[0].data.split("\t").join('').split('\n').join('')
     })
     $('.seller-score-feedback').each( (x, el) => {
-      console.log(el)
+      // console.log(el)
     })
     $('.store-open-time span').each( (x, el) => {
       result.store.open_since = el.children[0].data
     })
 
   }
-  console.log(result)
+  console.log(JSON.stringify(result, null, 2))
 })
